@@ -1,4 +1,4 @@
-name: apparchitecture
+name: photo_diary
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -37,6 +37,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get_it: ^7.2.0
+  shared_preferences: ^2.0.15
+  calendar_view: ^1.0.0
+  device_preview: ^1.1.0
+  intl: ^0.17.0
+  image_picker: ^0.8.6
+  sqflite: ^2.2.0+3
+
+ 
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +69,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+      - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,12 +84,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+      - family: Roboto
+        fonts:
+          - asset: assets/fonts/robotolight.ttf
+            weight: 300
+          - asset: assets/fonts/Roboto-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Roboto-Medium.ttf
+            weight: 500
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
