@@ -84,6 +84,7 @@ class CalendarWidget extends StatelessWidget {
                   return CellWidget(
                     day: date.day,
                     today: isToday,
+                    memory: Diary(imagePath: "", date: date.toString()),
                   );
                 }
               },
@@ -121,11 +122,16 @@ class CellWidget extends StatelessWidget {
       child: InkWell(
         hoverColor: Theme.of(context).hoverColor,
         onTap: () {
-          if (memory != null) {
+          if (memory!.id != null) {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => ShowEntryScreen(
                       memory: memory!,
                     ))));
+          } else {
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+                    builder: ((context) => const NewEntryScreen())))
+                .then((value) => stateManager.getDiaries());
           }
         },
         child: Container(

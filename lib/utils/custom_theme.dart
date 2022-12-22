@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 Color colorSecondary = const Color(0xffd4bebe);
 Color colorSecondaryHint = Color.fromRGBO(212, 190, 190, 0.5);
-Color colorPrimary = const Color.fromARGB(255, 48, 40, 71);
-Color colorPrimaryDarkShade = const Color(0xff3B3355);
+// Color colorPrimary = Color(0xFF27203A);
+Color colorPrimary = Color(0xFF2A2F34);
+// Color colorPrimaryDarkShade = const Color(0xff3B3355);
+Color colorPrimaryDarkShade = const Color(0xff495057);
 
 ThemeData darktheme(BuildContext context) {
   TextTheme textTheme(TextTheme basetheme) {
@@ -18,6 +20,12 @@ ThemeData darktheme(BuildContext context) {
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w300,
           fontSize: 16.0,
+          color: colorSecondary,
+        ),
+        headline3: basetheme.headline3!.copyWith(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          fontSize: 18.0,
           color: colorSecondary,
         ),
         bodyText1: basetheme.bodyText1!.copyWith(
@@ -72,5 +80,7 @@ ThemeData darktheme(BuildContext context) {
               ),
               borderRadius: BorderRadius.circular(5))),
       iconTheme: IconThemeData(color: colorSecondary, size: 20.0),
-      appBarTheme: appBarTheme(darktheme.appBarTheme));
+      appBarTheme: appBarTheme(darktheme.appBarTheme),
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: colorSecondary)));
 }
