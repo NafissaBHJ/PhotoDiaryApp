@@ -8,6 +8,7 @@ Color colorPrimary = Color(0xFF2A2F34);
 Color colorPrimaryDarkShade = const Color(0xff495057);
 
 ThemeData darktheme(BuildContext context) {
+  
   TextTheme textTheme(TextTheme basetheme) {
     return basetheme.copyWith(
         headline1: basetheme.headline1!.copyWith(

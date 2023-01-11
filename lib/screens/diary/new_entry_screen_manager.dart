@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:photo_diary/screens/notifiers/diary_notifier.dart';
 import 'package:photo_diary/services/service_storage.dart';
 import '../../models/size.dart';
-import '../../service_locator.dart';
+import '../../services/service_locator.dart';
 
 class NewEntryManager {
   final imageNotifier = ValueNotifier<File?>(null);
@@ -46,10 +46,10 @@ class NewEntryManager {
     imageNotifier.value = File(img);
   }
 
-  void saveEntry(String? title, String? caption) {
+  void saveEntry(String? title, String? caption, DateTime date) {
     if (imageNotifier.value != null) {
       diaryNotifier.insert(title, caption, imageNotifier.value!.path,
-          DateFormat.yMd().format(DateTime.now()));
+          DateFormat.yMd().format(date));
     }
   }
 

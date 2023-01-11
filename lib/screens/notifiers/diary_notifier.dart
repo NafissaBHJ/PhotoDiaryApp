@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_diary/service_locator.dart';
+import 'package:photo_diary/services/service_locator.dart';
 import 'package:photo_diary/services/service_storage.dart';
 
 import '../../models/diary.dart';

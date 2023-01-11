@@ -7,7 +7,7 @@ import 'package:photo_diary/screens/diary/new_entry_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_diary/screens/diary/show_entry_screen.dart';
 import 'package:photo_diary/screens/home/home_screen_manager.dart';
-import 'package:photo_diary/service_locator.dart';
+import 'package:photo_diary/services/service_locator.dart';
 
 import '../../models/diary.dart';
 import '../../utils/widgets/page_painter.dart';
@@ -71,6 +71,7 @@ class CalendarWidget extends StatelessWidget {
                 if (value.isNotEmpty) {
                   return CellWidget(
                       day: date.day,
+                      date: date,
                       today: isToday,
                       memory: value.firstWhere(
                           (element) =>
@@ -83,6 +84,7 @@ class CalendarWidget extends StatelessWidget {
                 } else {
                   return CellWidget(
                     day: date.day,
+                    date: date,
                     today: isToday,
                     memory: Diary(imagePath: "", date: date.toString()),
                   );
@@ -109,10 +111,16 @@ class DayNumberWidget extends StatelessWidget {
 }
 
 class CellWidget extends StatelessWidget {
-  CellWidget({Key? key, required this.day, required this.today, this.memory})
+  CellWidget(
+      {Key? key,
+      required this.day,
+      required this.today,
+      required this.date,
+      this.memory})
       : super(key: key);
   final int day;
   final bool today;
+  final DateTime date;
   final Diary? memory;
   final stateManager = getIt<HomeManager>();
 
@@ -130,7 +138,9 @@ class CellWidget extends StatelessWidget {
           } else {
             Navigator.of(context)
                 .push(MaterialPageRoute(
-                    builder: ((context) => const NewEntryScreen())))
+                    builder: ((context) => new NewEntryScreen(
+                          date: date,
+                        ))))
                 .then((value) => stateManager.getDiaries());
           }
         },
@@ -148,15 +158,16 @@ class CellWidget extends StatelessWidget {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              (today && memory!.imagePath.isEmpty)
+              (memory!.imagePath.isEmpty)
                   ? Center(
                       child: InkWell(
-                      child: const Hero(
-                          tag: "today", child: Icon(Icons.add_rounded)),
+                      
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(
-                                builder: ((context) => const NewEntryScreen())))
+                                builder: ((context) => new NewEntryScreen(
+                                      date: date,
+                                    ))))
                             .then((value) => stateManager.getDiaries());
                       },
                     ))

@@ -1,10 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:photo_diary/screens/home/home_screen_manager.dart';
 
-import 'screens/diary/new_entry_screen_manager.dart';
-import 'services/database_storage.dart';
-import 'services/service_storage.dart';
-import 'services/shared_preferences_storage.dart';
+import '../screens/diary/new_entry_screen_manager.dart';
+import 'database_storage.dart';
+import 'service_storage.dart';
+import 'shared_preferences_storage.dart';
 
 final getIt = GetIt.instance;
 

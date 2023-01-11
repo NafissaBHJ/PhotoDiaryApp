@@ -5,10 +5,11 @@ import 'package:photo_diary/screens/diary/new_entry_screen_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../service_locator.dart';
+import '../../services/service_locator.dart';
 
 class NewEntryScreen extends StatefulWidget {
-  const NewEntryScreen({super.key});
+  const NewEntryScreen({super.key, required this.date});
+  final DateTime date;
 
   @override
   State<NewEntryScreen> createState() => _NewEntryScreen();
@@ -33,7 +34,8 @@ class _NewEntryScreen extends State<NewEntryScreen> {
           actions: [
             TextButton(
                 onPressed: (() {
-                  stateManager.saveEntry(controller1.text, controller2.text);
+                  stateManager.saveEntry(
+                      controller1.text, controller2.text, widget.date);
                   Navigator.of(context).pop();
                 }),
                 child: Text('Save'))
@@ -91,12 +93,23 @@ class Page extends StatelessWidget {
   }
 }
 
-class ImageWidget extends StatelessWidget {
+class ImageWidget extends StatefulWidget {
   ImageWidget({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<ImageWidget> createState() => _ImageWidgetState();
+}
+
+class _ImageWidgetState extends State<ImageWidget> {
   final stateManager = getIt<NewEntryManager>();
+
+  @override
+  void dispose() {
+    super.dispose();
+    stateManager.imageNotifier.value = null;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:photo_diary/screens/diary/new_entry_screen_manager.dart';
-import 'package:photo_diary/service_locator.dart';
+import 'package:photo_diary/services/service_locator.dart';
 
 import '../../models/diary.dart';
 
