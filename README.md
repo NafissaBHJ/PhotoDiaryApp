@@ -6,8 +6,8 @@ A photo diary,
 
 Remember your day by adding a picture.
 
-![alt text](https://github.com/NafissaBHJ/PhotoDiaryApp/tree/main/assets/images/image1.png?raw=true)
-![alt text](https://github.com/NafissaBHJ/PhotoDiaryApp/tree/main/assets/images/image3.png?raw=true)
+![alt text](https://github.com/NafissaBHJ/PhotoDiaryApp/blob/main/assets/images/image1.png?raw=true)
+![alt text](https://github.com/NafissaBHJ/PhotoDiaryApp/blob/main/assets/images/image3.png?raw=true)
 
 I made this simple app just to remember my days with a single picture,not being a social media person probably 
 
