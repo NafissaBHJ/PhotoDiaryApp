@@ -12,7 +12,6 @@ import 'work_manager.dart';
 void main() {
   setupGetIt();
   WidgetsFlutterBinding.ensureInitialized();
-  print('hhhhhhhhereeeeeee');
   Workmanager().initialize(callbackDispatcher, isInDebugMode: kDebugMode);
   startBackgroundUpdate();
   runApp(MyApp());

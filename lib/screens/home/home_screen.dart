@@ -21,8 +21,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final stateManager = getIt<HomeManager>();
+
   @override
   void initState() {
+    super.initState();
     stateManager.init();
   }
 
@@ -56,7 +58,7 @@ class CalendarWidget extends StatelessWidget {
     return ValueListenableBuilder<List<Diary>>(
         valueListenable: stateManager.diaryNotifier,
         builder: (context, value, Child) {
-          return Container(
+          return SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: MonthView(
@@ -106,7 +108,7 @@ class DayNumberWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
 }
 
@@ -138,7 +140,7 @@ class CellWidget extends StatelessWidget {
           } else {
             Navigator.of(context)
                 .push(MaterialPageRoute(
-                    builder: ((context) => new NewEntryScreen(
+                    builder: ((context) => NewEntryScreen(
                           date: date,
                         ))))
                 .then((value) => stateManager.getDiaries());
@@ -161,11 +163,10 @@ class CellWidget extends StatelessWidget {
               (memory!.imagePath.isEmpty)
                   ? Center(
                       child: InkWell(
-                      
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(
-                                builder: ((context) => new NewEntryScreen(
+                                builder: ((context) => NewEntryScreen(
                                       date: date,
                                     ))))
                             .then((value) => stateManager.getDiaries());
