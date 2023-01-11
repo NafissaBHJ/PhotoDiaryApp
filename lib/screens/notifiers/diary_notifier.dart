@@ -17,7 +17,6 @@ class DiaryNotifier extends ValueNotifier<List<Diary>> {
 
   Future<void> getDiaries() async {
     value = await storageservice.getRecords() ?? [];
-    print(value.length);
     notifyListeners();
   }
 }

@@ -7,11 +7,12 @@ import 'package:path_provider/path_provider.dart';
 
 class DatabaseStorage extends StorageService {
   late Database database;
+
+  // doc comment : opening the database
   @override
   Future<void> openAppDatabase() async {
     var databasesPath = await getApplicationDocumentsDirectory();
     String path = join(databasesPath.path, 'diary_app_release.db');
-    print(path);
 
     database = await openDatabase(path,
         version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
@@ -23,7 +24,6 @@ class DatabaseStorage extends StorageService {
   }
 
   Future<void> _onUpgrade(Database db, int oldv, int newv) async {
-    print(newv);
     if (oldv < newv) {
       await db.execute('ALTER TABLE diary ADD COLUMN date TEXT');
     }
@@ -32,7 +32,6 @@ class DatabaseStorage extends StorageService {
   @override
   Future<int?> insertRow(Diary diary) async {
     int id = await database.insert("diary", diary.toMap());
-    print('insert id ---> $id');
   }
 
   @override
@@ -41,10 +40,8 @@ class DatabaseStorage extends StorageService {
   @override
   Future<List<Diary>?> getRecords() async {
     var records = await database.query('diary');
-    print("here are the records $records");
-    List<Diary>? diaryList = records != null
-        ? List.of(records.map((e) => Diary.fromMap(e)).toList())
-        : [];
+    List<Diary>? diaryList =
+        List.of(records.map((e) => Diary.fromMap(e)).toList());
     return diaryList;
   }
 }
